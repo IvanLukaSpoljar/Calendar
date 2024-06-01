@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            user-select: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+
+            margin: 5%;
+            background-color: rgb(0, 0, 0);
+        }
+
+
+        #my_calendar {
+            display: block;
+            width: 100%;
+
+            font-size: 1.3em;
+        }
+
+        #my_calendar_header,
+        #my_calendar_footer {
+            display: flex;
+            justify-content: flex-start;
+            justify-items: center;
+            align-items: center;
+            background-color: rgb(255, 169, 83);
+            padding: 10px;
+
+            gap: 3%;
+
+            border-radius: 5px;
+        }
+
+        #my_calendar_footer {
+            justify-content: space-between;
+        }
+
+        #my_calendar_header>* {
+            width: 100%;
+            text-align: center;
+        }
+
+        #my_calendar_days {
+            padding: 1em 0px;
+        }
+
+        .my_row {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+
+            gap: 3%;
+        }
+
+        .my_row>* {
+            width: 100%;
+            text-align: center;
+            background-color: rgb(255, 169, 83);
+            height: 5em;
+            border-radius: 5px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        #my_calendar_footer_year_wrapper,
+        #my_calendar_footer_month_wrapper,
+        #my_calendar_footer_day_wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        #my_calendar_footer_year_wrapper>p,
+        #my_calendar_footer_month_wrapper>p,
+        #my_calendar_footer_day_wrapper>p {
+            margin: 0px;
+            padding: 0px 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="my_calendar">
+        <div id="my_calendar_header"></div>
+
+        <div id="my_calendar_days">
+            <div class="my_row"></div>
+            <div class="my_row"></div>
+            <div class="my_row"></div>
+            <div class="my_row"></div>
+            <div class="my_row"></div>
+        </div>
+
+        <div id="my_calendar_footer">
+
+            <div id="my_calendar_footer_year_wrapper">
+                <strong>Year: </strong>
+                <p>X</p>
+            </div>
+
+            <div id="my_calendar_footer_month_wrapper">
+                <strong>Month: </strong>
+                <p>X</p>
+            </div>
+
+            <div id="my_calendar_footer_day_wrapper">
+                <strong>Day: </strong>
+                <p>X</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        calendarInitialize();
+
+        /*************************************FUNCTIONS******************************************/
+        function calendarInitialize() {
+
+            //new Date(2023, 2, 5)
+            let currentDate = new Date();
+            let daysInWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+            //Display current date in calendar
+            document.getElementById("my_calendar_footer_year_wrapper").getElementsByTagName('p')[0].innerText = currentDate.getFullYear();
+            document.getElementById("my_calendar_footer_month_wrapper").getElementsByTagName('p')[0].innerText = currentDate.getMonth() + 1;
+            document.getElementById("my_calendar_footer_day_wrapper").getElementsByTagName('p')[0].innerText = currentDate.getDate();
+
+            //Names of days in week
+            try {
+                let daysNameWrapper = document.getElementById('my_calendar_header');
+                daysNameWrapper.innerHTML = '';
+                for (let i = 0; i < daysInWeek.length; i++) { daysNameWrapper.insertAdjacentHTML('beforeend', `<div> <strong>${daysInWeek[i]}</strong> </div>`); }
+            } catch (error) {
+                console.log(error);
+            }
+
+            //All days in month
+            try {
+
+                let allDaysWrapper = document.getElementById('my_calendar_days');
+                let calendarRows = allDaysWrapper.children;
+
+                let startDateOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+                let daysNumberInThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+                let daysCounter = 0;
+
+                let dayClickedColor = "rgb(75, 167, 198)";
+                let dayDefaultColor = "rgb(255, 169, 83)";
+
+                for (let i = 0; i < calendarRows.length; i++) {
+
+                    let oneRow = calendarRows[i];
+
+                    //oneRow.innerHTML = '';
+                    while (oneRow.lastChild) { oneRow.removeChild(oneRow.lastChild) }
+
+                    for (let j = 0; j < daysInWeek.length; j++) {
+
+                        let div = document.createElement('div');
+                        div.innerHTML = `<strong>${daysCounter + 1}</strong>`;
+
+                        let visibility = true;
+
+                        if (i == 0) {
+
+                            if (j < startDateOfThisMonth.getDay()) { visibility = false; }
+                            else { visibility = true; daysCounter++; }
+
+                        } else { visibility = ++daysCounter <= daysNumberInThisMonth; }
+
+                        div.style.visibility = visibility ? 'visible' : 'hidden';
+
+                        if (visibility) {
+                            div.addEventListener("click", (event) => {
+                                let htmlElement = event.target;
+
+                                if (htmlElement instanceof HTMLDivElement) {
+                                    if (htmlElement.style.backgroundColor == dayClickedColor) { htmlElement.style.backgroundColor = dayDefaultColor; }
+                                    else { htmlElement.style.backgroundColor = dayClickedColor; }
+                                }
+
+                                console.log("Clicked day: " + htmlElement.innerText);
+                            });
+                        }
+
+                        oneRow.appendChild(div);
+                    }
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
