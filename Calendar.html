@@ -191,7 +191,12 @@
 
                         div.style.visibility = visibility ? 'visible' : 'hidden';
 
-                        if (visibility) {
+                        if (daysCounter == currentDate.getDate()) {
+                            div.style.backgroundColor = dayClickedColor;
+                        }
+
+                        /*if (visibility) {
+                            //By clicking day in calendar it changes color
                             div.addEventListener("click", (event) => {
                                 let htmlElement = event.target;
 
@@ -202,7 +207,7 @@
 
                                 console.log("Clicked day: " + htmlElement.innerText);
                             });
-                        }
+                        }*/
 
                         oneRow.appendChild(div);
                     }
