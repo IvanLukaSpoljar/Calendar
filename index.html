@@ -193,7 +193,7 @@
             try {
                 let daysNameWrapper = document.getElementById('my_calendar_header');
                 daysNameWrapper.innerHTML = '';
-                for (let i = 0; i < daysInWeek.length; i++) { daysNameWrapper.insertAdjacentHTML('beforeend', `<div> <strong>${daysInWeek[i]}</strong> </div>`); }
+                for (let i = 0; i < daysInWeek.length; i++) { daysNameWrapper.insertAdjacentHTML('beforeend', `<div><strong>${daysInWeek[i]}</strong> </div>`); }
             } catch (error) {
                 console.log(error);
             }
@@ -212,6 +212,8 @@
                 let dayClickedColor = "rgb(75, 167, 198)";
                 let dayDefaultColor = "rgb(255, 169, 83)";
 
+                let targetElementID = '';
+
                 for (let i = 0; i < calendarRows.length; i++) {
 
                     let oneRow = calendarRows[i];
@@ -222,7 +224,7 @@
                     for (let j = 0; j < daysInWeek.length; j++) {
 
                         let div = document.createElement('div');
-                        div.innerHTML = `<strong>${daysCounter + 1}</strong>`;
+                        div.innerHTML = `<strong id="day${daysCounter}">${daysCounter + 1}</strong>`;
 
                         let visibility = true;
 
@@ -237,6 +239,7 @@
 
                         if (daysCounter == currentDate.getDate()) {
                             div.style.backgroundColor = dayClickedColor;
+                            targetElementID = "day" + daysCounter;
                         }
 
                         /*if (visibility) {
@@ -256,6 +259,9 @@
                         oneRow.appendChild(div);
                     }
                 }
+
+                //Find element with ID then scroll to this element
+                document.getElementById(targetElementID).scrollIntoView({ behavior: "smooth" });
 
             } catch (error) {
                 console.log(error);
