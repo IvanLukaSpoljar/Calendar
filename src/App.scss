@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  user-select: none;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: min-content;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  border-radius: var(--small_border_radius_px);
+}
+
+/* Handle (thumb) */
+::-webkit-scrollbar-thumb {
+  border-radius: var(--small_border_radius_px) 0 0 var(--small_border_radius_px);
+  background-color: #ffa953;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(75, 167, 198);
+}
+
+#my_calendar {
+  font-family: "Roboto", sans-serif;
+
+  font-size: large;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#my_calendar_header,
+#my_calendar_footer {
+  display: flex;
+  justify-content: flex-start;
+  justify-items: center;
+  align-items: center;
+  background-color: rgb(255, 169, 83);
+  padding: 10px;
+
+  gap: 3%;
+}
+
+#my_calendar_header {
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+#my_calendar_footer {
+  justify-content: space-between;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+}
+
+#my_calendar_header > * {
+  width: 100%;
+  text-align: center;
+}
+
+#my_calendar_days {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  flex-grow: 1;
+
+  overflow: auto;
+}
+
+.my_row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+
+  gap: 3%;
+}
+
+.my_row > * {
+  width: 100%;
+  text-align: center;
+  background-color: rgb(255, 169, 83);
+  height: 5em;
+  border-radius: 10px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+#my_calendar_footer_year_wrapper,
+#my_calendar_footer_month_wrapper,
+#my_calendar_footer_day_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+#my_calendar_footer_year_wrapper > p,
+#my_calendar_footer_month_wrapper > p,
+#my_calendar_footer_day_wrapper > p {
+  margin: 0px;
+  padding: 0px 10px;
+}
