@@ -71,7 +71,7 @@ function App() {
 
             if (daysCounter == currentDate.getDate()) {
               div.style.backgroundColor = dayClickedColor;
-              targetElementID = "day" + daysCounter;
+              targetElementID = "day" + (daysCounter - 1);
             }
 
             /*if (visibility) {
