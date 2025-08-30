@@ -34,6 +34,13 @@ function App() {
     try {
 
       let allDaysWrapper = document.getElementById('my_calendar_days');
+
+      for (let i = 0; i < 6; i++) {
+        let oneRowOf7Days = document.createElement('div');
+        oneRowOf7Days.classList.add('my_row');
+        allDaysWrapper?.append(oneRowOf7Days);
+      }
+
       let calendarRows = allDaysWrapper?.children;
 
       let startDateOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
@@ -108,11 +115,6 @@ function App() {
       <div id="my_calendar_header"></div>
 
       <div id="my_calendar_days">
-        <div className="my_row"></div>
-        <div className="my_row"></div>
-        <div className="my_row"></div>
-        <div className="my_row"></div>
-        <div className="my_row"></div>
       </div>
 
       <div id="my_calendar_footer">
