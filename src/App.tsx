@@ -58,8 +58,8 @@ function App() {
 
           let oneRow = calendarRows[i];
 
-          //oneRow.innerHTML = '';
-          while (oneRow.lastChild) { oneRow.removeChild(oneRow.lastChild) }
+          oneRow.innerHTML = '';
+          //while (oneRow.lastChild) { oneRow.removeChild(oneRow.lastChild) }
 
           for (let j = 0; j < daysInWeek.length; j++) {
 
