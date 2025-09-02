@@ -37,7 +37,7 @@ function App() {
     try {
       let allDaysWrapper = document.getElementById('my_calendar_days');
 
-      for (let i = 0; i < Math.trunc(daysNumberInThisMonth) + 1; i++) {
+      for (let i = 0; i < Math.trunc(daysNumberInThisMonth / 7) + 1; i++) {
         let oneRowOf7Days = document.createElement('div');
         oneRowOf7Days.classList.add('my_row');
         allDaysWrapper?.append(oneRowOf7Days);
