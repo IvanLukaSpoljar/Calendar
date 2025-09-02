@@ -15,6 +15,9 @@ function App() {
     const monthElement = document.getElementById("my_calendar_footer_month_wrapper")?.getElementsByTagName('p')[0];
     const dayElement = document.getElementById("my_calendar_footer_day_wrapper")?.getElementsByTagName('p')[0];
 
+    let startDateOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    let daysNumberInThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
     if (yearElement) yearElement.innerText = currentDate.getFullYear().toString();
     if (monthElement) monthElement.innerText = (currentDate.getMonth() + 1).toString();
     if (dayElement) dayElement.innerText = currentDate.getDate().toString();
@@ -32,19 +35,15 @@ function App() {
 
     //All days in month
     try {
-
       let allDaysWrapper = document.getElementById('my_calendar_days');
 
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < Math.trunc(daysNumberInThisMonth) + 1; i++) {
         let oneRowOf7Days = document.createElement('div');
         oneRowOf7Days.classList.add('my_row');
         allDaysWrapper?.append(oneRowOf7Days);
       }
 
       let calendarRows = allDaysWrapper?.children;
-
-      let startDateOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-      let daysNumberInThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
       let daysCounter = 0;
 
