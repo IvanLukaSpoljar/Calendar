@@ -18,9 +18,9 @@ function App() {
     let startDateOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     let daysNumberInThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
-    if (yearElement) yearElement.innerText = currentDate.getFullYear().toString();
-    if (monthElement) monthElement.innerText = (currentDate.getMonth() + 1).toString();
-    if (dayElement) dayElement.innerText = currentDate.getDate().toString();
+    if (yearElement) yearElement.innerHTML = "&nbsp;" + currentDate.getFullYear().toString();
+    if (monthElement) monthElement.innerHTML = "&nbsp;" + (currentDate.getMonth() + 1).toString();
+    if (dayElement) dayElement.innerHTML = "&nbsp;" + currentDate.getDate().toString();
 
     //Names of days in week
     try {
@@ -118,7 +118,9 @@ function App() {
       <div id="my_calendar_footer">
         <div id="my_calendar_footer_year_wrapper">
           <strong>Year: </strong>
-          <p></p>
+          <strong>
+            <p></p>
+          </strong>
         </div>
 
         <div id="my_calendar_footer_month_wrapper">
@@ -130,7 +132,9 @@ function App() {
 
         <div id="my_calendar_footer_day_wrapper">
           <strong>Day: </strong>
-          <p></p>
+          <strong>
+            <p></p>
+          </strong>
         </div>
       </div>
     </div>
