@@ -113,8 +113,7 @@ function App() {
     <div id="my_calendar">
       <div id="my_calendar_header"></div>
 
-      <div id="my_calendar_days">
-      </div>
+      <div id="my_calendar_days"></div>
 
       <div id="my_calendar_footer">
         <div id="my_calendar_footer_year_wrapper">
@@ -124,7 +123,9 @@ function App() {
 
         <div id="my_calendar_footer_month_wrapper">
           <strong>Month: </strong>
-          <p></p>
+          <strong>
+            <p></p>
+          </strong>
         </div>
 
         <div id="my_calendar_footer_day_wrapper">

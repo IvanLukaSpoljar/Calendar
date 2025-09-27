@@ -28,7 +28,7 @@ body,
 ::-webkit-scrollbar-thumb {
   border-radius: var(--small_border_radius_px) 0 0 var(--small_border_radius_px);
   background-color: #ffa953;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
@@ -61,13 +61,13 @@ body,
 }
 
 #my_calendar_header {
- // border-radius: 0 0 10px 10px;
+  // border-radius: 0 0 10px 10px;
   margin-bottom: 10px;
 }
 
 #my_calendar_footer {
   justify-content: space-between;
-//  border-radius: 10px 10px 0px 0px;
+  //  border-radius: 10px 10px 0px 0px;
   margin-top: 10px;
 }
 
@@ -100,7 +100,7 @@ body,
   text-align: center;
   background-color: rgb(255, 169, 83);
   height: 5em;
-  border-radius: 10px;
+  border-radius: 5px;
 
   display: flex;
 
