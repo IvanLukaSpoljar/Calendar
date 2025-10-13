@@ -1,7 +1,9 @@
 {
+  "lang": "en",
   "short_name": "",
   "name": "Calendar",
   "author": "Ivan Luka Špoljar",
+  "description": "Simple calendar for displaying days in month.",
   "icons": [
     {
       "src": "favicon.ico",
