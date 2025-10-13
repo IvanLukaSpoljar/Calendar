@@ -1,5 +1,5 @@
 {
-  "short_name": "Calendar",
+  "short_name": "",
   "name": "Calendar",
   "author": "Ivan Luka Špoljar",
   "icons": [
@@ -20,7 +20,10 @@
     }
   ],
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#ffa953",
-  "background_color": "#ffa953"
+  "background_color": "#ffa953",
+  "categories": [
+    "productivity"
+  ]
 }
